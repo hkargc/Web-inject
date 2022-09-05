@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2, //目前仅版本2支持此种注入,版本3中完全失效
+    "name": "Inject scripts",
+    "version": "1.0.0",
+    "description": "Inject scripts",
+    "author": "Me",
+    "permissions": ["https://*/*", "http://*/*"],
+	"offline_enabled": true,
+	"web_accessible_resources": ["wsHook.js","xhrHook.js"], //先声明需要动态加载的脚本,否则触发安全策略
+	"icons": {
+        "128": "icon_128.png"
+    },
+    "content_scripts": [{
+        "matches": ["https://*/*", "http://*/*"],
+        "js": ["content-script.js"],
+        "run_at": "document_start", //页面加载前就执行,尽早加载
+        "all_frames": true //注入所有包括框架在内的页面
+    }]
+}
