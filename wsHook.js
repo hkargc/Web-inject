@@ -27,9 +27,11 @@ var wsHook = {};
     }
 
     var before = wsHook.before = function(data, url, wsObject) {
+		console.log("Sending WebSocket message to " + url + " : " + data); //发送的数据,替换成你要的...
         return data;
     };
     var after = wsHook.after = function(e, url, wsObject) {
+		console.log("Received WebSocket message from " + url + " : " + e.data); //接收的数据,替换成你要的...
         return e;
     };
     var modifyUrl = wsHook.modifyUrl = function(url) {

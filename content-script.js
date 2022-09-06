@@ -21,7 +21,7 @@ function loadJS(js){
 		//alert("Inject error...");
 	}
 }
-//loadJS("wsHook.js"); //Websocket注入
-//loadJS("xhrHook.js"); //Ajax注入
+loadJS("wsHook.js"); //Websocket注入
+loadJS("xhrHook.js"); //Ajax注入
 
-loadJS("wsHook.min.js"); //Websocket注入,压缩以使其尽早完成加载.压缩工具: https://jscompress.com/
+//loadJS("wsHook.min.js"); //Websocket注入,压缩以使其尽早完成加载.压缩工具: https://jscompress.com/
