@@ -1,12 +1,15 @@
 {
-    "manifest_version": 2, //目前仅版本2支持此种注入,版本3中完全失效
+    "manifest_version": 3,
     "name": "Inject scripts",
     "version": "1.0.0",
     "description": "Inject scripts",
     "author": "Me",
-    "permissions": ["https://*/*", "http://*/*"],
+    "permissions": [],
 	"offline_enabled": true,
-	"web_accessible_resources": ["wsHook.js","xhrHook.js"], //先声明需要动态加载的脚本,否则触发安全策略
+	"web_accessible_resources": [{
+		"matches": ["https://*/*", "http://*/*"],
+		"resources": ["wsHook.js", "wsHook.min.js", "xhrHook.js", "xhrHook.min.js"]
+	}], //先声明需要动态加载的脚本,否则触发安全策略
 	"icons": {
         "128": "icon_128.png"
     },
