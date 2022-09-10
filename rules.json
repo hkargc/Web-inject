@@ -10,12 +10,16 @@
         }, {
             "header": "Cache-Control",
             "operation": "set",
-            "value": "no-cache"
+            "value": "no-store, no-cache"
         }],
         "responseHeaders": [{
             "header": "X",
             "operation": "set",
             "value": "PHP.NET"
+        }, {
+            "header": "Cache-Control",
+            "operation": "set",
+            "value": "no-store, no-cache"
         }]
     },
     "condition": {
