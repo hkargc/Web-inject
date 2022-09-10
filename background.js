@@ -1,0 +1,4 @@
+chrome.declarativeNetRequest.getEnabledRulesets(function(){
+	
+})
+

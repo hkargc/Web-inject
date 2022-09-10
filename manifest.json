@@ -4,19 +4,35 @@
     "version": "1.0.0",
     "description": "Inject scripts",
     "author": "Me",
-    "permissions": [],
-	"offline_enabled": true,
-	"web_accessible_resources": [{
-		"matches": ["https://*/*", "http://*/*"],
-		"resources": ["wsHook.js", "wsHook.min.js", "xhrHook.js", "xhrHook.min.js"]
-	}], //先声明需要动态加载的脚本,否则触发安全策略
-	"icons": {
+    "offline_enabled": true,
+    "icons": {
         "128": "icon_128.png"
     },
+	//暂时没有用到background
+    "background": {
+        "service_worker": "background.js"
+    },
+	//以下三项是为了修改请求和响应头
+    "permissions": ["declarativeNetRequest", "declarativeNetRequestWithHostAccess", "declarativeNetRequestFeedback"],
+    "host_permissions": [
+        "https://*/*", "http://*/*"
+    ],
+    "declarative_net_request": {
+        "rule_resources": [{
+            "id": "1",
+            "enabled": true,
+            "path": "rules.json"
+        }]
+    },
+	//以下两项是为目标页面和框架注入JS文件
+    "web_accessible_resources": [{
+        "matches": ["https://*/*", "http://*/*"],
+        "resources": ["hook.js"]
+    }],
     "content_scripts": [{
         "matches": ["https://*/*", "http://*/*"],
         "js": ["content-script.js"],
-        "run_at": "document_start", //页面加载前就执行,尽早加载
-        "all_frames": true //注入所有包括框架在内的页面
+        "run_at": "document_start",
+        "all_frames": true
     }]
 }
